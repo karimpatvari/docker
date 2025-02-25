@@ -17,7 +17,7 @@ services:
 
   backend:
     container_name: task-tracker-backend
-    build: /Users/karimpatvari/IdeaProjects/backend
+    image: patvari/task-tracker-backend
     ports:
       - "8080:8080"
     environment:
@@ -57,9 +57,8 @@ services:
 
   email-sender:
     container_name: task-tracker-email-sender
-    build: /Users/karimpatvari/IdeaProjects/email-sender
+    image: patvari/task-tracker-email-sender
     depends_on:
-      - backend
       - kafka
     environment:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: "kafka:9092"
@@ -73,7 +72,6 @@ services:
     image: patvari/task-tracker-scheduler
     container_name: task-tracker-scheduler
     depends_on:
-      - backend
       - kafka
     environment:
       SPRING_DATASOURCE_URL: "jdbc:mysql://db:3306/mydatabase"
