@@ -32,7 +32,7 @@ services:
 
   frontend:
     container_name: task-tracker-frontend
-    build: /Users/karimpatvari/IdeaProjects/frontend
+    image: patvari/task-tracker-frontend
     ports:
       - "3000:80"
     depends_on:
